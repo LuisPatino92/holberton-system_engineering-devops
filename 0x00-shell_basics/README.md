@@ -1,0 +1,1 @@
+This folder contains a script that prints your current directory absolute path.
