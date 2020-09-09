@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -a  $(PWD) .. /
+ls -a -l $(PWD) .. /
