@@ -1,0 +1,1 @@
+This repo contains the 0x00. Shell, basics tasks. These are som simple tasks in order to learn through doing.
