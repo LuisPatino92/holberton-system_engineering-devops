@@ -1,0 +1,21 @@
+#!/bin/bash
+echo "${bold}NAME"
+    eniac - the fist electronic general-purpose digital computer.
+ 
+SYNOPSIS
+    eniac
+
+DESCRIPTION
+    Eniac was Turing-complete, and able to solve "a large class of numerical problems" through reprogramming.
+
+OPTIONS
+    eniac does not take any options.
+
+SEE ALSO
+    ENIAC could be programmed to perform complex sequences of operations(2), including loops(2), branches(2), and subroutines(2).
+
+BUGS
+    No known bugs.
+
+AUTHOR
+   University of Pennsylvania.
