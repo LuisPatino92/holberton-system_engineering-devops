@@ -1,0 +1,1 @@
+This folder has all the excercises of Shell, init files, variables and expansions.
