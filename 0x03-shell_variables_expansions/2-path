@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdir $(echo "$PATH/action")
+PATH=$PATH":/action"
