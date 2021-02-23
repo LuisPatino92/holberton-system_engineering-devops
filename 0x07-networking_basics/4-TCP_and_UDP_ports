@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#This script shows a list of Active internet connections 
+#and a list of Active Unix sockets
+
+netstat -l -p
