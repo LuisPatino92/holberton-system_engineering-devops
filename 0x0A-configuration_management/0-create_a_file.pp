@@ -1,3 +1,4 @@
+#Ensures that there is a holberton file in tmp
 file {'/tmp/holberton':
   ensure  => file,
   owner   => 'www-data',
