@@ -4,10 +4,10 @@ file {'/etc/ssh/ssh_config':
   mode    => '0600',
   content =>
   "# Read more about SSH config files: https://linux.die.net/man/5/ssh_config\nHost LuchoServer
-	HostName 35.196.27.222
-	User ubuntu
-	Port 22
-	IdentityFile ~/.ssh/holberton
-	PasswordAuthentication no
+  HostName 35.196.27.222
+  User ubuntu
+  Port 22
+  IdentityFile ~/.ssh/holberton
+  PasswordAuthentication no
 ",
 }
