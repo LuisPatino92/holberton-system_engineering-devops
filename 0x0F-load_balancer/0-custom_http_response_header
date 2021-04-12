@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# This script installs nginx and get sure it listens to port 80
+
+# Checks if NGINX exists and if not installs it.
+if ! [ -x "$(command -v nginx)" ]
+then
+	apt-get update -y;
+	apt-get upgrade -y;
+	apt-get install -y nginx;
+fi
+
+
+# Variables to handle redirection
+redirection="\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=q76bMs-NwRkhttps://www.youtube.com/watch?v=q76bMs-NwRk;\n\t}";
+not_found="\\\terror_page 404 /custom_not_found.html;\n\n\tlocation = /custom_not_found.html {\n\t\troot /var/www/custom/html;\n\t\tinternal;\n\t}\n";
+
+# Checks if /etc/nginx/sites-enabled/default exists and updates it if so.
+if [ -f /etc/nginx/sites-enabled/default ]; then
+	grep "listen 80 default_server" -q /etc/nginx/sites-enabled/default || sed -i '/listen [0-9]* default_server/c\\tlisten 80 default_server;' /etc/nginx/sites-enabled/default;
+	grep "return 301" -q /etc/nginx/sites-enabled/default || sed -i "/server_name _;/a\ ${redirection}" /etc/nginx/sites-enabled/default;
+	grep "error_page 404 /custom_not_found.html;" -q /etc/nginx/sites-enabled/default || sed -i "/^\tlocation \/ {$/i ${not_found}" /etc/nginx/sites-enabled/default;
+	mkdir -p /var/www/custom/html/ && echo "Ceci n'est pas une page" >> /var/www/custom/html/custom_not_found.html;
+fi
+
+# Checks if /var/www/html/index.nginx-debian.html exists and updates it if so.
+if [ -f /var/www/html/index.nginx-debian.html ]; then
+	grep "Holberton School" -q  /var/www/html/index.nginx-debian.html || sed -i 's/Welcome to nginx!/Holberton School/g' /var/www/html/index.nginx-debian.html;
+fi
+
+# Get the apropiate name to compose the header response
+MyName=$(cat /etc/hostname)
+
+# Set the header response based on the name server
+grep "X-Served-By" -q /etc/nginx/sites-enabled/default || sed -i "/^\tserver_name _;$/a\\\n\tadd_header X-Served-By ${MyName} always;" /etc/nginx/sites-enabled/default;
+
+# Start of nginx service with reload of config file
+systemctl is-active --quiet nginx || service nginx start;
+nginx -s reload;
