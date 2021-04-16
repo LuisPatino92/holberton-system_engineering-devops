@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script fixes the issue on this server
+
+rm /etc/nginx/sites-enabled/default;
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default;
+nginx -s reload;
