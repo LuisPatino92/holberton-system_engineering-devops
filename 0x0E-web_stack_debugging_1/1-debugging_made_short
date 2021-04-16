@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # This script fixes the issue on this server
-ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default;
-service nginx restart;
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart
