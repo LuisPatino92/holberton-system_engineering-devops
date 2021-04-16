@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This script sets up a Load balancer to serve two web servers.
 
 if ! [ -x "$(command -v haproxy)" ]
