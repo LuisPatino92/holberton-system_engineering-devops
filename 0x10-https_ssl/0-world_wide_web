@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# This script allows you to check record type of subdomains
+
+# Function that return something
+
+print_record () {
+	echo "${1}" | awk 'NR==1 { print $4 }';
+}
+
+print_IP () {
+	echo "${1}" | awk 'NR==1 { print $5 }';
+}
+
+# Compose the subdomain to dug, based on the number of parameters
+
+if [ $# -eq 1 ]
+then
+	info=$(dig "www.${1}" | grep -A1 'ANSWER SECTION:' | tail -n 1);
+	echo "The subdomain www is a $(print_record "${info}") record and points to $(print_IP "${info}")";
+	info=$(dig "lb-01.${1}" | grep -A1 'ANSWER SECTION:' | tail -n 1);
+	echo "The subdomain lb-01 is a $(print_record "${info}") record and points to $(print_IP "${info}")";
+	info=$(dig "web-01.${1}" | grep -A1 'ANSWER SECTION:' | tail -n 1);
+	echo "The subdomain web-01 is a $(print_record "${info}") record and points to $(print_IP "${info}")";
+	info=$(dig "web-02.${1}" | grep -A1 'ANSWER SECTION:' | tail -n 1);
+	echo "The subdomain web-02 is a $(print_record "${info}") record and points to $(print_IP "${info}")";
+else
+	subdomain="${2}.${1}";
+	info=$(dig "${subdomain}" | grep -A1 'ANSWER SECTION:' | tail -n 1);
+	echo "The subdomain ${2} is a $(print_record "${info}") record and points to $(print_IP "${info}")";
+fi
