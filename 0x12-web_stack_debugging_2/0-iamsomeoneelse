@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # This script runs WhoimI command as the user passed as argument
 
-sudo -u "$1" whoami
-
+sudo -u "$1" whoami || echo "There was an error";
