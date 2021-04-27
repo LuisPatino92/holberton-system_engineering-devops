@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # This script runs WhoimI command as the user passed as argument
 
-su -c whoami "$1"
+sudo -u "$1" whoami
 
