@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # This script runs WhoimI command as the user passed as argument
 
-runuser -l "${1}" -c whoami;
+runuser -l "${1}" --session-command=whoami;
