@@ -3,7 +3,7 @@
 
 if [ "${#}" -eq 1 ]
 then
-	runuser -l "$1" -c --session-command=whoami;
+	runuser -u "$1" -c whoami;
 else
 	echo "You need to pass at least 1 argument";
 fi
