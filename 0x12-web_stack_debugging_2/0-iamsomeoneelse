@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 # This script runs WhoimI command as the user passed as argument
 
-runuser -l "${1}" --session-command=whoami;
+if [ "${#}" -eq 1 ]
+then
+	runuser -l "${1}" --session-command=whoami;
+else
+	echo "You need to pass at least 1 argument";
+fi
