@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 # This script runs WhoimI command as the user passed as argument
 
-if [ "${#}" -eq 1 ]
-then
-	su -u "$1" -c whoami;
-else
-	echo "You need to pass at least 1 argument";
-fi
+su -c whoami "$1"
+
