@@ -35,7 +35,7 @@ def make_user_dict():
 
 if __name__ == '__main__':
     user_state = make_user_dict()
-    print('Employee {} is done with tasks ({}/{}):'.format(
+    print('Employee {} is done with tasks({}/{}):'.format(
                                                     user_state['name'],
                                                     user_state['done_tasks'],
                                                     user_state['total_tasks']))
